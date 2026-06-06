@@ -24,12 +24,15 @@ proxy-groups:
     lazy: false
 
 rules:
-  # OpenAI / ChatGPT
-  - DOMAIN-SUFFIX,chatgpt.com,🤖 AI
-  - DOMAIN-SUFFIX,openai.com,🤖 AI
-  - DOMAIN-SUFFIX,oaistatic.com,🤖 AI
-  - DOMAIN-SUFFIX,oaiusercontent.com,🤖 AI
-  - DOMAIN-SUFFIX,chatgpt.livekit.cloud,🤖 AI
+  # OpenAI / ChatGPT - 本地核心规则
+  - DOMAIN-SUFFIX,chatgpt.com,AI
+  - DOMAIN-SUFFIX,openai.com,AI
+  - DOMAIN-SUFFIX,oaistatic.com,AI
+  - DOMAIN-SUFFIX,oaiusercontent.com,AI
+  - DOMAIN-SUFFIX,chatgpt.livekit.cloud,AI
+
+  # OpenAI / ChatGPT - 远程规则集补漏
+  - RULE-SET,openai,AI
 
   # OpenAI API / Azure
   - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,🤖 AI
