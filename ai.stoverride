@@ -4,7 +4,7 @@ desc: 少数对地区/IP敏感的 AI 走 JMS，美国节点手动固定；DeepSe
 proxy-providers:
   jms-us:
     type: http
-    url: 'https://jmssub.net/members/getsub.php?service=1310201&id=023d8ff8-5c8a-44a2-8f91-6229b18be096&exclude=4,5,6'
+    url: 'https://api.wcc.best/sub?target=clash&url=https%3A%2F%2Fjmssub.net%2Fmembers%2Fgetsub.php%3Fservice%3D1310201%26id%3D023d8ff8-5c8a-44a2-8f91-6229b18be096%26exclude%3D4%2C5%2C6&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online.ini&filename=JMS(Only%20US)&emoji=true&list=false&tfo=false&scv=true&fdn=false&expand=true&sort=false&new_name=true'
     interval: 3600
     path: ./providers/jms-us.yaml
 
