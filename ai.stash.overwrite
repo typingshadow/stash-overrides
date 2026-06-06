@@ -39,11 +39,17 @@ rules:
   - DOMAIN-SUFFIX,claude.ai,🤖 AI
   - DOMAIN-SUFFIX,anthropic.com,🤖 AI
 
-  # Gemini / AI Studio
-  - DOMAIN-SUFFIX,gemini.google.com,🤖 AI
-  - DOMAIN-SUFFIX,aistudio.google.com,🤖 AI
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,🤖 AI
-  - DOMAIN-SUFFIX,bard.google.com,🤖 AI
+    # Google Gemini / AI Studio
+  - DOMAIN,gemini.google.com,AI
+  - DOMAIN-SUFFIX,gemini.google.com,AI
+  - DOMAIN,gemini.gstatic.com,AI
+  - DOMAIN-SUFFIX,gemini.gstatic.com,AI
+  - DOMAIN,aistudio.google.com,AI
+  - DOMAIN-SUFFIX,aistudio.google.com,AI
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI
+  - DOMAIN-SUFFIX,ai.google.dev,AI
+  - DOMAIN,bard.google.com,AI
+  - DOMAIN-SUFFIX,bard.google.com,AI
 
   # Perplexity / Poe
   - DOMAIN-SUFFIX,perplexity.ai,🤖 AI
