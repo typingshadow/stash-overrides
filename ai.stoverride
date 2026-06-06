@@ -1,0 +1,68 @@
+name: AI 分流到 JMS US
+desc: 少数对地区/IP敏感的 AI 走 JMS，美国节点手动固定；DeepSeek 等国内可访问 AI 不走此组
+
+proxy-providers:
+  jms-us:
+    type: http
+    url: 'https://jmssub.net/members/getsub.php?service=1310201&id=023d8ff8-5c8a-44a2-8f91-6229b18be096&exclude=4,5,6'
+    interval: 3600
+    path: ./providers/jms-us.yaml
+
+proxy-groups:
+  - name: 🤖 AI
+    type: select
+    use:
+      - jms-us
+
+  - name: 🧪 AI 节点状态
+    type: url-test
+    use:
+      - jms-us
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    lazy: false
+
+rules:
+  # OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,chatgpt.com,🤖 AI
+  - DOMAIN-SUFFIX,openai.com,🤖 AI
+  - DOMAIN-SUFFIX,oaistatic.com,🤖 AI
+  - DOMAIN-SUFFIX,oaiusercontent.com,🤖 AI
+  - DOMAIN-SUFFIX,chatgpt.livekit.cloud,🤖 AI
+
+  # OpenAI API / Azure
+  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,🤖 AI
+  - DOMAIN-SUFFIX,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,🤖 AI
+
+  # Claude / Anthropic
+  - DOMAIN-SUFFIX,claude.ai,🤖 AI
+  - DOMAIN-SUFFIX,anthropic.com,🤖 AI
+
+  # Gemini / AI Studio
+  - DOMAIN-SUFFIX,gemini.google.com,🤖 AI
+  - DOMAIN-SUFFIX,aistudio.google.com,🤖 AI
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,🤖 AI
+  - DOMAIN-SUFFIX,bard.google.com,🤖 AI
+
+  # Perplexity / Poe
+  - DOMAIN-SUFFIX,perplexity.ai,🤖 AI
+  - DOMAIN-SUFFIX,pplx.ai,🤖 AI
+  - DOMAIN-SUFFIX,poe.com,🤖 AI
+
+  # Microsoft Copilot / Bing AI
+  - DOMAIN-SUFFIX,copilot.microsoft.com,🤖 AI
+  - DOMAIN-SUFFIX,bing.com,🤖 AI
+  - DOMAIN-SUFFIX,bingapis.com,🤖 AI
+
+  # xAI / Grok
+  - DOMAIN-SUFFIX,grok.com,🤖 AI
+  - DOMAIN-SUFFIX,x.ai,🤖 AI
+
+  # AI 编程工具
+  - DOMAIN-SUFFIX,cursor.com,🤖 AI
+  - DOMAIN-SUFFIX,cursor.sh,🤖 AI
+  - DOMAIN-SUFFIX,windsurf.com,🤖 AI
+  - DOMAIN-SUFFIX,codeium.com,🤖 AI
+  - DOMAIN-SUFFIX,githubcopilot.com,🤖 AI
+  - DOMAIN-SUFFIX,copilot-proxy.githubusercontent.com,🤖 AI
